@@ -307,6 +307,12 @@ namespace DbAccess
             DbType dt = GetDbTypeOfColumn(columnSchema);
             if (val is DBNull)
                 if (dt == DbType.String) return "";
+                else if (dt == DbType.Int32) return 0;
+                else if (dt == DbType.Decimal) return 0;
+                else if (dt == DbType.Double) return 0;
+                else if (dt == DbType.Guid) return Guid.NewGuid();
+                else if (dt == DbType.DateTime) return new DateTime(1900, 1, 1);
+                else if (dt == DbType.Boolean) return false;
                 else return null;
 
             switch (dt)
